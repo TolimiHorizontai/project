@@ -5,7 +5,9 @@ use App\User;
 use App\Role;
 use App\Photo;
 
+use App\Http\Controllers\File;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\UsersRequest;
@@ -158,8 +160,24 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
-        User::find($id)->delete();
+        //nustatom useri:
+        $user = User::findOrFail($id);
+
+        //surandam sasaja su paveiksleliu ir unlinkinam - neveikia kazkas:
+
+       // $usersImage = public_path("/{$user->photo->file}"); 
+       // if (file_exists($usersImage)) { 
+        //    unlink($usersImage);
+       // }
+
+       unlink(public_path() . $user->photo->file);
+
+        //istrinam useri:
+        $user->delete();
+
+        //sukuriam sesija zinutes atspausdinimui:
+        Session::flash('deleted_user', 'The user has been deleted');
+
         return redirect('admin/users');
     }
 }

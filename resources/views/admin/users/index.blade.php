@@ -4,6 +4,12 @@
 
 <h1> admin/users/index</h1>
 
+@if(Session::has('deleted_user'))
+
+  <p class="bg-danger">{{session('deleted_user')}}
+
+@endif
+
 <table class="table">
     <thead>
       <tr>
