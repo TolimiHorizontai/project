@@ -29,7 +29,7 @@
         @foreach($posts as $post)
           <tr>
               <td>{{$post->id}}</td>
-              <td>{{$post->category_id}}</td>
+              <td>{{$post->category ? $post->category->name : 'noCat'}}</td>
               <td>{{$post->user->name}}</td>
               <td>{{$post->title}}</td>
               <td><img height="50" src="{{$post->photo ? asset($post->photo->file) :'http://Placehold.it/200x200'}}""></td>
