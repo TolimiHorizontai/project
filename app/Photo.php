@@ -15,7 +15,6 @@ class Photo extends Model
         'file'
     ];
 
-
 public function role(){
     return $this->belongsTo('App\Role');
 }
@@ -26,9 +25,15 @@ public function user(){
 }
 */
 
+/*
+//Anksciau buvusi funkcija, su ja nei sarase, nei edit puslapy nerodo nuotrauku:
 public function getFileAttribute($photo){
-    
-    return asset($this->uploads . $photo);
+    return $this->uploads . $photo;
 }
+*/
 
+//Udemy pasiulyta funkcija del users sarase nerodomu paveiksleliu veliau buvo problemos su unlink()
+public function getFileAttribute($photo){
+    return $this->uploads . $photo;
+    }
 }

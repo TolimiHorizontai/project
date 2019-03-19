@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use App\Photo;
+use App\Post;
 
 use App\Http\Controllers\File;
 
@@ -170,7 +171,7 @@ class AdminUsersController extends Controller
         //    unlink($usersImage);
        // }
 
-       unlink(public_path() . $user->photo->file);
+       unlink(public_path($user->photo->file));
 
         //istrinam useri:
         $user->delete();

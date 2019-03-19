@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID"></script>
+
+
         <title>Laravel</title>
        
         <!-- Styles -->
@@ -29,8 +33,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel LARAVEL
                 </div>
+
+                <div class="paypal">
+                        <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+                        <script>paypal.Buttons().render('body');</script>
+                </div>
+
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
