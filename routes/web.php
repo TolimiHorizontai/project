@@ -4,6 +4,7 @@ use App\Role;
 use App\UsersRequest;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AdminPostsController;
+use App\Http\Controllers\AdminCategoriesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +34,7 @@ Route::group(['middleware' => 'admin'], function(){
 
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
+    Route::resource('admin/categories', 'AdminCategoriesController');
     
 });
 

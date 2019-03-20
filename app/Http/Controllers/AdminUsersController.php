@@ -171,8 +171,9 @@ class AdminUsersController extends Controller
         //    unlink($usersImage);
        // }
 
+       if($user->photo){
        unlink(public_path($user->photo->file));
-
+       }
         //istrinam useri:
         $user->delete();
 

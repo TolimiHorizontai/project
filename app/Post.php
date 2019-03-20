@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Photo;
 use App\Category;
+use App\Role;
 
 class Post extends Model
 {
