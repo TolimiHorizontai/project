@@ -1,0 +1,45 @@
+@extends('layouts.admin')
+
+@section('content')
+
+@if($photos)
+    <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+            
+                <th>Name</th>
+            
+                <th>Created at</th>
+                
+            </tr>
+            </thead>
+
+            <tbody>
+
+                
+                    @foreach($photos as $photo)
+                    <tr>
+                        <td>{{$photo->id}}</td>
+                
+                        <td><img height="50" src="{{$photo->file ? asset($photo->file) : 'http://Placehold.it/200x200'}}" alt=""></td>
+                    
+                        <td>{{$photo->created_at ? $photo->created_at->diffForHumans() : 'no date'}}</td>
+                        <td>
+
+                                {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminMediaController@destroy', $photo->id]])!!}
+                                <div class="form-group">
+                                        {!! Form::submit('Delete', ['class'=>'btn btn-danger col-sm-4 ']) !!}
+                                </div>
+                                {!!Form::close()!!}
+
+                        </td>
+                    </tr>
+
+                    @endforeach
+            
+            </tbody>
+    </table>
+@endif
+
+@stop

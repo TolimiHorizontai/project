@@ -15,6 +15,8 @@ use App\Role;
 use App\Photo;
 use App\Post;
 use App\Category;
+use App\Comment;
+use App\CommentReply;
 
 class AdminPostsController extends Controller
 {
@@ -143,4 +145,11 @@ class AdminPostsController extends Controller
          return redirect('admin/posts');
      
     }
+
+public function post($id){
+
+    $post=Post::find($id);
+    return view('post', compact('post'));
+}
+
 }

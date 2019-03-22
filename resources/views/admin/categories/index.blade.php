@@ -4,7 +4,7 @@
 
 <h1>CATEGORIES</h1>
 
-<div class="col-sm-6">
+<div class="col-sm-4">
 
         {!! Form::open(['method'=>'POST', 'action'=>'AdminCategoriesController@store'])!!}
 
@@ -23,7 +23,7 @@
 
 </div>
 
-<div class="col-sm-6">
+<div class="col-sm-4">
 
     @if($categories) 
         <table class="table">

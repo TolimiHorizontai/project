@@ -2,6 +2,7 @@
 use App\User;
 use App\Role;
 use App\UsersRequest;
+use App\Http\Controllers\AdminMediaController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminCategoriesController;
@@ -30,12 +31,26 @@ Route::get('/admin', function(){
 
 });
 
+Route::get('admin/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
+
 Route::group(['middleware' => 'admin'], function(){
+
+    Route::get('/admin', function(){
+
+        return view('admin.index');
+    
+    });
 
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
     Route::resource('admin/categories', 'AdminCategoriesController');
-    
+    Route::resource('admin/media', 'AdminMediaController');
+    //Route::get('admin/media/upload', ['as'=>'admin.media.upload', 'uses'=>'AdminMediaController@store']);
+    Route::resource('admin/comments/replies', 'CommentRepliesController');
+    Route::resource('admin/comments', 'CommentController');
+
+
+
 });
 
 

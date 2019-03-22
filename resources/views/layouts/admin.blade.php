@@ -16,6 +16,8 @@
     <!-- Bootstrap Core CSS  xxxxxxxxxxxx   cia kad rodytu grazia lentele:  xxxxxxxxxxxxxxxx -->
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    @yield('styles')
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
@@ -32,7 +34,7 @@
 
 <body id="admin-page">
 
-<div id="wrapper">
+<div id="wrapper" class="col-sm-3">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top " role="navigation" style="margin-bottom: 0">
@@ -94,7 +96,7 @@
         {{--</ul>--}}
 
 
-        <div class="navbar-default sidebar col-lg-3" role="navigation">
+        <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                      <li>
@@ -135,6 +137,10 @@
                             </li>
 
                             <li>
+                                <a href="admin/comments">All Comments</a>
+                            </li>
+
+                            <li>
                                 <a href="admin/posts/create">Create Post</a>
                             </li>
 
@@ -150,10 +156,6 @@
                                 <a href="admin/categories">All Categories</a>
                             </li>
 
-                            <li>
-                                <a href="admin/categories/create">Create Category</a>
-                            </li>
-
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
@@ -163,16 +165,17 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/media">All Media</a>
+                                <a href="admin/media">All Media</a>
                             </li>
 
                             <li>
-                                <a href="">Upload Media</a>
+                                <a href="admin/media/create">Upload Media</a>
                             </li>
 
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+
 
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -265,9 +268,9 @@
             <!-- /.sidebar-collapse -->
         </div>
         <!-- /.navbar-static-side -->
-
+    </div>
         <!-- Page Content -->
-        <div id="page-wrapper" class="col-lg-8">
+        <div id="page-wrapper" class="col-sm-8">
             <div class="container-fluid">
                 <div class="row">
                     <div class="">
@@ -283,12 +286,12 @@
         </div>
         <!-- /#page-wrapper -->
 
-        </div>
+        
         <!-- /#wrapper -->
 
         <!-- jQuery -->
         <script src="{{asset('js/libs.js')}}"></script>
-
+        @yield('scripts')
         @yield('footer')
 
 </body>

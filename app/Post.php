@@ -7,6 +7,8 @@ use App\User;
 use App\Photo;
 use App\Category;
 use App\Role;
+use App\Comment;
+use App\CommentReply;
 
 class Post extends Model
 {
@@ -35,6 +37,12 @@ class Post extends Model
     public function category(){
  
         return $this->belongsTo('App\Category');
+        
+    }
+
+    public function comment(){
+ 
+        return $this->hasMany('App\Comment');
         
     }
 }
