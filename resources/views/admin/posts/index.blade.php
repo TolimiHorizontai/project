@@ -19,6 +19,8 @@
         <th>Title</th>
         <th>Photo</th>
         <th>Post body</td>
+        <th>View Post</th>
+        <th>View Comments</th>
         <th>Created at</td>
         <th>Updated at</td>
       </tr>
@@ -34,6 +36,8 @@
               <td>{{$post->title}}</td>
               <td><img height="50" src="{{$post->photo ? asset($post->photo->file) :'http://Placehold.it/200x200'}}"></td>
               <td>{{str_limit($post->body, 10)}}</td>
+              <td><a href="{{route('home.post', ['id' => $post->id])}}">View Post</a></td>
+              <td><a href="{{route('comments.show', $post->id)}}">View Comments</a></td>
               <td>{{$post->created_at->diffForHumans()}}</td>
               <td>{{$post->updated_at->diffForHumans()}}</td>
               

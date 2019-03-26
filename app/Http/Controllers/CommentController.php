@@ -23,7 +23,8 @@ class CommentController extends Controller
     public function index()
     {
         //
-       $comments = Comment::all();
+       
+        $comments = Comment::all();
         return  view('admin.comments.index', compact('comments'));
     }
 
@@ -45,7 +46,28 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //komentaru saugojima susiesim su auth(), kad useriams nereiketu ivedineti papildomu lauku
+        //apie save, o visa reikalinga info mums surastu auth(), kartu tai reiskia, kad komentuoti gales tik isilogine,
+        // taigi:
+
+        //isivedam user:
+        $user = Auth::user();
+
+        $data = [
+            'post_id'=> $request->post_id,
+            'is_active' => $user->is_active,
+            'author'=> $user->name,
+            'email' => $user->email,
+            'photo' => $user->photo->file,
+            'body' => $request->body
+        ];
+
+        Comment::create($data);
+
+        $request->session()->flash('comment_message', 'Your message has been submitted and is waiting moderation');
+
+        return redirect()->back();
+
     }
 
     /**
@@ -57,6 +79,13 @@ class CommentController extends Controller
     public function show($id)
     {
         //
+        $post = Post::findOrFail($id);
+        $comments = $post->comments;
+    
+    return view('admin.comments.show', compact('comments'));
+
+
+
     }
 
     /**
@@ -80,6 +109,9 @@ class CommentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Comment::findOrFail($id)->update($request->all());
+        return redirect()->back();
+    
     }
 
     /**
@@ -91,5 +123,8 @@ class CommentController extends Controller
     public function destroy($id)
     {
         //
+        Comment::findOrFail($id)->delete();
+        return redirect()->back();
+
     }
 }

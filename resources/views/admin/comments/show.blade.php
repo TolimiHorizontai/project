@@ -2,7 +2,7 @@
 
 @section('content')
     
-<h1>Posts COMMENTS from Comments.INDEX</h1>
+<h1>Posts COMMENTS FROM Comments.show</h1>
 
 @if(Session::has('deleted_comment'))
 
@@ -10,25 +10,29 @@
 
 @endif
 
+
+@if($comments) 
 <table class="table">
     <thead>
       <tr>
-        <th>ID</th>     
+        <th>ID</th>            
+        <th>Post ID</th>
         <th>Author</th>
-        <th>Email</th>
         <th>Comment body</th>      
         <th>Photo</th>
-        <th>View</th>
+        <th>View Post</th>
+        <th>Approve</th> 
+        <th>Delete</th> 
       </tr>
     </thead>
     <tbody>
 
-      @if($comments) 
+   
         @foreach($comments as $comment)
           <tr>
-              <td>{{$comment->id}}</td>              
+              <td>{{$comment->id}}</td>                       
+              <td>{{$comment->post_id}}</td>
               <td>{{$comment->author}}</td>
-              <td>{{$comment->email}}</td>
               <td>{{str_limit($comment->body, 10)}}</td>          
               <td><img height="40" src="{{$comment->photo ? asset($comment->photo->file) :'http://Placehold.it/200x200'}}"></td>          
               <td><a href="{{route('home.post', ['id' => $comment->post_id])}}">View Post</a></td>
@@ -46,7 +50,7 @@
       
                 {!!Form::close()!!}
 
-                @else
+                 @else
 
                 {!! Form::open(['method'=>'PATCH', 'action'=>['CommentController@update', $comment->id]])!!}
 
@@ -76,15 +80,14 @@
               </td>
 
             </tr>
-        @endforeach  
+         @endforeach
     </tbody>
   </table>
 
-@else
+   
+  @else
 
   <p> <h1>No comments</h1> </p>
-
-
-  @endif
       
+  @endif
 @stop

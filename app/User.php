@@ -4,6 +4,9 @@ namespace App;
 use App\Role;
 use App\Photo;
 use App\Post;
+use App\Comment;
+use App\CommentReply;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;

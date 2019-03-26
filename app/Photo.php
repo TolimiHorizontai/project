@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Role;
 use App\User;
+use App\Post;
 
 class Photo extends Model
 {
@@ -17,6 +18,12 @@ class Photo extends Model
 
 public function role(){
     return $this->belongsTo('App\Role');
+}
+
+public function post(){
+
+    return $this->hasOne('App\Post');
+
 }
 
 /*

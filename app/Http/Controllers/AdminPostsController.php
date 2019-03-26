@@ -28,8 +28,9 @@ class AdminPostsController extends Controller
     public function index()
     {
         //
+        
         $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts', 'categories'));
     }
 
     /**
@@ -76,6 +77,11 @@ class AdminPostsController extends Controller
     public function show($id)
     {
         //
+        $post = Post::findOrFail($id);
+        $comments = $post->comments;
+    
+        return view('admin.comments.show', compact('comments'));
+
     }
 
     /**
@@ -148,8 +154,10 @@ class AdminPostsController extends Controller
 
 public function post($id){
 
+    $categories = Category::all();
     $post=Post::find($id);
-    return view('post', compact('post'));
+    $comments = Comment::all();
+    return view('post', compact('post', 'categories', 'comments'));
 }
 
 }

@@ -1,11 +1,20 @@
 <?php
+use App\Comment;
+use App\CommentReply;
 use App\User;
 use App\Role;
+use App\Photo;
+use App\Post;
+use App\Category;
+
 use App\UsersRequest;
 use App\Http\Controllers\AdminMediaController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminCategoriesController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\CommentRepliesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
