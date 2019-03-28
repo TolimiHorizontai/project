@@ -78,10 +78,11 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        //find a post by id:
         $post = Post::findOrFail($id);
+        //link to comment and post relationship(function in Post.php comments()):
         $comments = $post->comments;
-    
+        //return view:
     return view('admin.comments.show', compact('comments'));
 
 

@@ -4,10 +4,19 @@
 }
 
 body {
-  background-color: cyan;
+  background-color: greenyellow;
 }
 
 #admin-page {
   padding-top: 10px;
 }
 
+.comment-reply {
+  display: none;
+}
+
+.comment-reply{
+
+  display: none;
+
+}

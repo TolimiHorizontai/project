@@ -24,6 +24,7 @@ class CommentRepliesController extends Controller
     public function index()
     {
         //
+        return "it`s OK";
     }
 
     /**
@@ -34,6 +35,27 @@ class CommentRepliesController extends Controller
     public function create()
     {
         //
+    }
+
+    public function createReply(Request $request){
+
+        $user = Auth::user();
+
+        $data = [
+            'comment_id'=> $request->comment_id,
+            'is_active' => $user->is_active,
+            'author'=> $user->name,
+            'email' => $user->email,
+            'photo' => $user->photo->file,
+            'body' => $request->body
+        ];
+
+        CommentReply::create($data);
+
+        $request->session()->flash('reply_message', 'Your reply has been submitted and is waiting moderation');
+
+        return redirect()->back();
+
     }
 
     /**
@@ -55,7 +77,14 @@ class CommentRepliesController extends Controller
      */
     public function show($id)
     {
-        //
+        //find a comment by id:
+        $comment = Comment::findOrFail($id);
+        //link to comment and replies relationship(function in Comment.php replies()):
+        $replies = $comment->replies;
+        //return view:
+        return view('admin.comments.replies.show', compact('replies'));
+
+    //return "it works";
     }
 
     /**
@@ -79,6 +108,8 @@ class CommentRepliesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        CommentReply::findOrFail($id)->update($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -89,6 +120,9 @@ class CommentRepliesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //find and delete:
+
+        CommentReply::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

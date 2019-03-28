@@ -9,9 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>Post Page</title>
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}"  rel="stylesheet">
     
     <!-- Bootstrap Core CSS  xxxxxxxxxxxx   cia kad rodytu grazia lentele:  xxxxxxxxxxxxxxxx -->  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -125,6 +126,10 @@
 
 
 <script src="{{asset('js/libs.js')}}"></script>
+
+@yield('scripts')
+
+
 </body>
 
 </html>

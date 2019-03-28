@@ -15,10 +15,13 @@
       <tr>
         <th>ID</th>     
         <th>Author</th>
-        <th>Email</th>
-        <th>Comment body</th>      
         <th>Photo</th>
-        <th>View</th>
+        <th>Email</th>
+        <th>Comment body</th>             
+        <th>View Post</th>
+        <th>View Replies</th>
+        <th>Approve</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -28,11 +31,11 @@
           <tr>
               <td>{{$comment->id}}</td>              
               <td>{{$comment->author}}</td>
-              <td>{{$comment->email}}</td>
-              <td>{{str_limit($comment->body, 10)}}</td>          
-              <td><img height="40" src="{{$comment->photo ? asset($comment->photo->file) :'http://Placehold.it/200x200'}}"></td>          
+              <td><img height="40" src="{{$comment->photo ? asset($comment->photo) :'http://Placehold.it/200x200'}}"></td>
+              <td>{{str_limit($comment->email, 10)}}</td>
+              <td>{{str_limit($comment->body, 10)}}</td>                    
               <td><a href="{{route('home.post', ['id' => $comment->post_id])}}">View Post</a></td>
-
+              <td><a href="{{route('replies.show', ['id' => $comment->id])}}">View Replies</a></td>
               <td>
                 @if($comment->is_active == 1)
 

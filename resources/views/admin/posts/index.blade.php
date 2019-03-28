@@ -13,12 +13,12 @@
 <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
+        <th>Post ID</th>
         <th>Cat</th>
-        <th>Owner</th>
+        <th>Author</th>
         <th>Title</th>
-        <th>Photo</th>
         <th>Post body</td>
+        <th>Post photo</th>
         <th>View Post</th>
         <th>View Comments</th>
         <th>Created at</td>
@@ -34,8 +34,8 @@
               <td>{{$post->category ? $post->category->name : 'noCat'}}</td>
               <td><a href="{{route('posts.edit', ['id' => $post->id])}}">{{$post->user->name}}</a></td>
               <td>{{$post->title}}</td>
-              <td><img height="50" src="{{$post->photo ? asset($post->photo->file) :'http://Placehold.it/200x200'}}"></td>
               <td>{{str_limit($post->body, 10)}}</td>
+              <td><img height="50" src="{{$post->photo ? asset($post->photo->file) :'http://Placehold.it/200x200'}}"></td>
               <td><a href="{{route('home.post', ['id' => $post->id])}}">View Post</a></td>
               <td><a href="{{route('comments.show', $post->id)}}">View Comments</a></td>
               <td>{{$post->created_at->diffForHumans()}}</td>

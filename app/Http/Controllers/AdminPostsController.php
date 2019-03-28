@@ -156,8 +156,11 @@ public function post($id){
 
     $categories = Category::all();
     $post=Post::find($id);
-    $comments = Comment::all();
-    return view('post', compact('post', 'categories', 'comments'));
+    $comments = $post->comments()->whereIsActive(1)->get();
+   // $comments = Comment::all();
+    $replies = CommentReply::all();
+    //$replies = $comments->replies()->whereIsAcive(1)->get();
+    return view('post', compact('post', 'categories', 'comments', 'replies'));
 }
 
 }

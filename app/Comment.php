@@ -18,11 +18,12 @@ class Comment extends Model
         'author',
         'email',
         'body',
-        'is_active'
+        'is_active',
+        'photo'
 
     ];
 
-    public function reply(){
+    public function replies(){
  
         return $this->hasMany('App\CommentReply');
         

@@ -18,8 +18,8 @@
         <th>ID</th>            
         <th>Post ID</th>
         <th>Author</th>
-        <th>Comment body</th>      
         <th>Photo</th>
+        <th>Comment body</th>     
         <th>View Post</th>
         <th>Approve</th> 
         <th>Delete</th> 
@@ -33,8 +33,8 @@
               <td>{{$comment->id}}</td>                       
               <td>{{$comment->post_id}}</td>
               <td>{{$comment->author}}</td>
-              <td>{{str_limit($comment->body, 10)}}</td>          
-              <td><img height="40" src="{{$comment->photo ? asset($comment->photo->file) :'http://Placehold.it/200x200'}}"></td>          
+              <td><img height="40" src="{{$comment->photo ? asset($comment->photo) :'http://Placehold.it/200x200'}}"></td>
+              <td>{{str_limit($comment->body, 10)}}</td>            
               <td><a href="{{route('home.post', ['id' => $comment->post_id])}}">View Post</a></td>
 
               <td>
