@@ -34,7 +34,7 @@
               <td><img height="40" src="{{$comment->photo ? asset($comment->photo) :'http://Placehold.it/200x200'}}"></td>
               <td>{{str_limit($comment->email, 10)}}</td>
               <td>{{str_limit($comment->body, 10)}}</td>                    
-              <td><a href="{{route('home.post', ['id' => $comment->post_id])}}">View Post</a></td>
+              <td><a href="{{route('home.post', ['slug' => $comment->post->slug])}}">View Post</a></td>
               <td><a href="{{route('replies.show', ['id' => $comment->id])}}">View Replies</a></td>
               <td>
                 @if($comment->is_active == 1)

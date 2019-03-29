@@ -40,7 +40,8 @@ Route::get('/admin', function(){
 
 });
 
-Route::get('admin/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
+Route::get('admin/post/{slug}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
+//Route::get('admin/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 
 Route::group(['middleware' => 'admin'], function(){
 

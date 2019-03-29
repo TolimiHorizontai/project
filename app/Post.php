@@ -9,9 +9,22 @@ use App\Category;
 use App\Role;
 use App\Comment;
 use App\CommentReply;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Post extends Model
 {
+
+    use Sluggable;
+    use SluggableScopeHelpers;
+
+    public function sluggable() {
+        return [
+            'slug'      => [ 'source' => 'title'],
+
+        ];
+    }
+
     //fillables
     protected $fillable = [
         'category_id',

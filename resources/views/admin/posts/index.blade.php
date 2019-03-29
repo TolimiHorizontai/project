@@ -36,7 +36,7 @@
               <td>{{$post->title}}</td>
               <td>{{str_limit($post->body, 10)}}</td>
               <td><img height="50" src="{{$post->photo ? asset($post->photo->file) :'http://Placehold.it/200x200'}}"></td>
-              <td><a href="{{route('home.post', ['id' => $post->id])}}">View Post</a></td>
+              <td><a href="{{route('home.post', ['slug' => $post->slug])}}">View Post</a></td>
               <td><a href="{{route('comments.show', $post->id)}}">View Comments</a></td>
               <td>{{$post->created_at->diffForHumans()}}</td>
               <td>{{$post->updated_at->diffForHumans()}}</td>
@@ -48,4 +48,11 @@
       
     </tbody>
   </table>
+
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-5">
+      {{$posts->render()}}
+    </div>
+
+  </div>
 @stop

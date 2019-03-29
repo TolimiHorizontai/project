@@ -29,7 +29,7 @@ class AdminPostsController extends Controller
     {
         //
         
-        $posts = Post::all();
+        $posts = Post::paginate(5);
         return view('admin.posts.index', compact('posts', 'categories'));
     }
 
@@ -152,10 +152,10 @@ class AdminPostsController extends Controller
      
     }
 
-public function post($id){
+public function post($slug){
 
     $categories = Category::all();
-    $post=Post::find($id);
+    $post = Post::findBySlug($slug);
     $comments = $post->comments()->whereIsActive(1)->get();
    // $comments = Comment::all();
     $replies = CommentReply::all();

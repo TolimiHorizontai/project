@@ -77,6 +77,7 @@
                     <div class="media">
                         <a class="pull-left" href="#">
                             <img height = "64" class="media-object" src="{{asset($comment->photo)}}" alt="">
+                        <!-- for gravatars: src="Auth::user()->gravatar" - su blade, t.y. dvigubuose riestiniuose sklaustuose -->
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">{{$comment->author}}
