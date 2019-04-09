@@ -12,6 +12,7 @@
     <title>Admin</title>
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     
     <!-- Bootstrap Core CSS  xxxxxxxxxxxx   cia kad rodytu grazia lentele:  xxxxxxxxxxxxxxxx -->
     

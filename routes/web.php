@@ -58,7 +58,7 @@ Route::group(['middleware' => 'admin'], function(){
     //Route::get('admin/media/upload', ['as'=>'admin.media.upload', 'uses'=>'AdminMediaController@store']);
     Route::resource('admin/comments/replies', 'CommentRepliesController');
     Route::resource('admin/comments', 'CommentController');
-
+    
 
 
 });
@@ -66,6 +66,7 @@ Route::group(['middleware' => 'admin'], function(){
 Route::group(['middleware'=>'auth'], function(){
 
     Route::post('comment/reply', 'CommentRepliesController@createReply');
+    Route::delete('admin/delete/media', 'AdminMediaController@deleteMedia');
 
 });
 

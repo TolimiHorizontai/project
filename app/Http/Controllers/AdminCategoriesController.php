@@ -99,4 +99,7 @@ class AdminCategoriesController extends Controller
         Category::findOrFail($id)->delete();
         return redirect('/admin/categories');
     }
+
+
+    
 }
